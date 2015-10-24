@@ -21,8 +21,13 @@ NSString *const PATH_CONST = @"http://localhost:3000/%@";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSDictionary *keys;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"keys" ofType:@"plist"];
     
-    [[SPTAuth defaultInstance] setClientID: @"56f27508025e44f883156431203ca88d"];
+    if (path)
+        keys = [[NSDictionary alloc] initWithContentsOfFile:path];
+        
+    [[SPTAuth defaultInstance] setClientID: keys[@"spotifyClientID"]];
     [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"songgen://callback"]];
     
     // Construct a login URL and open it
