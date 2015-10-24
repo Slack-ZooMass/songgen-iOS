@@ -5,6 +5,23 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="laj-cw-y6E">
+            <objects>
+                <navigationController id="3JN-5O-05H" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rv9-mH-vBI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="O85-XV-FL8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0W-Gd-7L5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-814" y="487"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,6 +34,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-pZ-bcw">
+                                <rect key="frame" x="56" y="366" width="488" height="88"/>
+                                <animations/>
+                                <state key="normal" image="getStartedButton"/>
+                                <connections>
+                                    <segue destination="5E3-GY-HGH" kind="show" identifier="ChooseContentSeque" id="pFl-MO-l38"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-xy-XrJ">
                                 <rect key="frame" x="56" y="256" width="488" height="88"/>
                                 <animations/>
@@ -27,21 +52,78 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EIr-Ug-58d"/>
-                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="n32-Gj-J8O"/>
+                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0ur-en-O79"/>
+                            <constraint firstItem="ald-pZ-bcw" firstAttribute="top" secondItem="QTj-xy-XrJ" secondAttribute="bottom" constant="22" id="LeH-he-TnI"/>
+                            <constraint firstItem="ald-pZ-bcw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gJz-MJ-O4o"/>
+                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="leading" secondItem="ald-pZ-bcw" secondAttribute="leading" id="lvS-A9-sjR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jMs-jw-kJn"/>
                     <connections>
                         <outlet property="loginButton" destination="QTj-xy-XrJ" id="j0i-Nm-q1w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-45" y="465"/>
+        </scene>
+        <!--Content Type View Controller-->
+        <scene sceneID="vEu-04-rJq">
+            <objects>
+                <viewController id="5E3-GY-HGH" customClass="ContentTypeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XhT-4a-NK1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y4r-W7-LU6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LFO-TZ-ldC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_SplitscreenBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="rQa-HL-9iW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-9u-lh2">
+                                <rect key="frame" x="-50" y="385" width="691" height="157"/>
+                                <animations/>
+                                <state key="normal" image="byKeyword"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rg-wya">
+                                <rect key="frame" x="-45" y="148" width="691" height="157"/>
+                                <animations/>
+                                <state key="normal" image="byImages"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rQa-HL-9iW" firstAttribute="bottom" secondItem="Y4r-W7-LU6" secondAttribute="top" id="6uR-AW-JbB"/>
+                            <constraint firstItem="DqK-rg-wya" firstAttribute="centerX" secondItem="LFO-TZ-ldC" secondAttribute="centerX" id="C2k-7R-8kM"/>
+                            <constraint firstItem="7z0-9u-lh2" firstAttribute="top" secondItem="DqK-rg-wya" secondAttribute="bottom" constant="80" id="EMR-wN-kyQ"/>
+                            <constraint firstAttribute="trailing" secondItem="rQa-HL-9iW" secondAttribute="trailing" id="IoC-RH-0Sk"/>
+                            <constraint firstItem="rQa-HL-9iW" firstAttribute="top" secondItem="LFO-TZ-ldC" secondAttribute="top" id="QIq-Ls-H7O"/>
+                            <constraint firstItem="Y4r-W7-LU6" firstAttribute="top" secondItem="7z0-9u-lh2" secondAttribute="bottom" constant="58" id="gyu-Ds-Tz0"/>
+                            <constraint firstItem="rQa-HL-9iW" firstAttribute="leading" secondItem="LFO-TZ-ldC" secondAttribute="leading" id="jKt-mG-m4Z"/>
+                            <constraint firstItem="7z0-9u-lh2" firstAttribute="centerX" secondItem="LFO-TZ-ldC" secondAttribute="centerX" id="nRM-h2-xGE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chooseByImgBtn" destination="DqK-rg-wya" id="EUM-ds-afV"/>
+                        <outlet property="chooseByKeywordBtn" destination="7z0-9u-lh2" id="Ioc-9J-vsS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNv-0O-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="335"/>
         </scene>
     </scenes>
     <resources>
+        <image name="SG_SplitscreenBG.png" width="750" height="1334"/>
+        <image name="byImages" width="691" height="157"/>
+        <image name="byKeyword" width="691" height="157"/>
+        <image name="getStartedButton" width="488" height="88"/>
         <image name="loginButton" width="488" height="88"/>
     </resources>
 </document>

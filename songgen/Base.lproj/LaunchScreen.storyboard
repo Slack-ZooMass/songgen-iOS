@@ -16,8 +16,18 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kkO-rP-W5U">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kkO-rP-W5U" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="LJy-12-Ylu"/>
+                            <constraint firstItem="kkO-rP-W5U" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Utt-u3-vTH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,4 +35,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splashLogo" width="174" height="98"/>
+    </resources>
 </document>

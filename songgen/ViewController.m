@@ -12,6 +12,7 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *getStartedButton; // used for manual segue to move onto application
 @end
 
 @implementation ViewController
@@ -24,6 +25,9 @@
     // an iOS bug, so we wait a bit before doing so.
     [[UIApplication sharedApplication] performSelector:@selector(openURL:)
                       withObject:loginURL afterDelay:0.1];
+}
+- (IBAction)segueToApp:(id)sender {
+    
 }
 
 - (void)viewDidLoad {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */; };
+		87C9E1681BDC152D002A30F5 /* SG_SplitscreenBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */; };
 		87ED98071BDB9B130070454A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98061BDB9B130070454A /* main.m */; };
 		87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98091BDB9B130070454A /* AppDelegate.m */; };
 		87ED980D1BDB9B130070454A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED980C1BDB9B130070454A /* ViewController.m */; };
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeViewController.h; sourceTree = "<group>"; };
+		87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeViewController.m; sourceTree = "<group>"; };
+		87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SG_SplitscreenBG.png; sourceTree = "<group>"; };
 		87ED98021BDB9B130070454A /* songgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED98061BDB9B130070454A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87ED98081BDB9B130070454A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87C9E1661BDC1509002A30F5 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		87ED97F91BDB9B130070454A = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 		87ED98041BDB9B130070454A /* songgen */ = {
 			isa = PBXGroup;
 			children = (
+				87C9E1661BDC1509002A30F5 /* img */,
 				87ED98081BDB9B130070454A /* AppDelegate.h */,
 				87ED98091BDB9B130070454A /* AppDelegate.m */,
 				87ED980B1BDB9B130070454A /* ViewController.h */,
@@ -122,6 +136,8 @@
 				87ED98131BDB9B130070454A /* LaunchScreen.storyboard */,
 				87ED98161BDB9B130070454A /* Info.plist */,
 				87ED98051BDB9B130070454A /* Supporting Files */,
+				87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */,
+				87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */,
 			);
 			path = songgen;
 			sourceTree = "<group>";
@@ -268,6 +284,7 @@
 			files = (
 				87ED98421BDBAE3F0070454A /* keys.plist in Resources */,
 				87ED98151BDB9B130070454A /* LaunchScreen.storyboard in Resources */,
+				87C9E1681BDC152D002A30F5 /* SG_SplitscreenBG.png in Resources */,
 				87ED98121BDB9B130070454A /* Assets.xcassets in Resources */,
 				87ED98101BDB9B130070454A /* Main.storyboard in Resources */,
 			);
@@ -296,6 +313,7 @@
 			files = (
 				87ED980D1BDB9B130070454A /* ViewController.m in Sources */,
 				87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */,
+				87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */,
 				87ED98071BDB9B130070454A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +548,7 @@
 				87ED98311BDB9B130070454A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87ED98321BDB9B130070454A /* Build configuration list for PBXNativeTarget "songgenTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +557,7 @@
 				87ED98341BDB9B130070454A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87ED98351BDB9B130070454A /* Build configuration list for PBXNativeTarget "songgenUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +566,7 @@
 				87ED98371BDB9B130070454A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
