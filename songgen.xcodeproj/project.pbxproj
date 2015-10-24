@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */; };
 		87C9E1681BDC152D002A30F5 /* SG_SplitscreenBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */; };
+		87C9E16B1BDC1D7C002A30F5 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E16A1BDC1D7C002A30F5 /* ImagePickerViewController.m */; };
+		87C9E16F1BDC1F9D002A30F5 /* KeywordPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E16E1BDC1F9D002A30F5 /* KeywordPickerViewController.m */; };
 		87ED98071BDB9B130070454A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98061BDB9B130070454A /* main.m */; };
 		87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98091BDB9B130070454A /* AppDelegate.m */; };
 		87ED980D1BDB9B130070454A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED980C1BDB9B130070454A /* ViewController.m */; };
@@ -44,6 +46,10 @@
 		87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeViewController.h; sourceTree = "<group>"; };
 		87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeViewController.m; sourceTree = "<group>"; };
 		87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SG_SplitscreenBG.png; sourceTree = "<group>"; };
+		87C9E1691BDC1D7C002A30F5 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		87C9E16A1BDC1D7C002A30F5 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		87C9E16D1BDC1F9D002A30F5 /* KeywordPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordPickerViewController.h; sourceTree = "<group>"; };
+		87C9E16E1BDC1F9D002A30F5 /* KeywordPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordPickerViewController.m; sourceTree = "<group>"; };
 		87ED98021BDB9B130070454A /* songgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED98061BDB9B130070454A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87ED98081BDB9B130070454A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +108,21 @@
 			name = img;
 			sourceTree = "<group>";
 		};
+		87C9E16C1BDC1EBE002A30F5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				87ED980B1BDB9B130070454A /* ViewController.h */,
+				87ED980C1BDB9B130070454A /* ViewController.m */,
+				87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */,
+				87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */,
+				87C9E1691BDC1D7C002A30F5 /* ImagePickerViewController.h */,
+				87C9E16A1BDC1D7C002A30F5 /* ImagePickerViewController.m */,
+				87C9E16D1BDC1F9D002A30F5 /* KeywordPickerViewController.h */,
+				87C9E16E1BDC1F9D002A30F5 /* KeywordPickerViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		87ED97F91BDB9B130070454A = {
 			isa = PBXGroup;
 			children = (
@@ -129,15 +150,12 @@
 				87C9E1661BDC1509002A30F5 /* img */,
 				87ED98081BDB9B130070454A /* AppDelegate.h */,
 				87ED98091BDB9B130070454A /* AppDelegate.m */,
-				87ED980B1BDB9B130070454A /* ViewController.h */,
-				87ED980C1BDB9B130070454A /* ViewController.m */,
+				87C9E16C1BDC1EBE002A30F5 /* ViewControllers */,
 				87ED980E1BDB9B130070454A /* Main.storyboard */,
 				87ED98111BDB9B130070454A /* Assets.xcassets */,
 				87ED98131BDB9B130070454A /* LaunchScreen.storyboard */,
 				87ED98161BDB9B130070454A /* Info.plist */,
 				87ED98051BDB9B130070454A /* Supporting Files */,
-				87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */,
-				87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */,
 			);
 			path = songgen;
 			sourceTree = "<group>";
@@ -313,7 +331,9 @@
 			files = (
 				87ED980D1BDB9B130070454A /* ViewController.m in Sources */,
 				87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */,
+				87C9E16F1BDC1F9D002A30F5 /* KeywordPickerViewController.m in Sources */,
 				87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */,
+				87C9E16B1BDC1D7C002A30F5 /* ImagePickerViewController.m in Sources */,
 				87ED98071BDB9B130070454A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

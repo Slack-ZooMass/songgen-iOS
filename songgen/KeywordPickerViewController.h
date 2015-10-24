@@ -1,5 +1,5 @@
 //
-//  ContentTypeViewController.h
+//  KeywordPickerViewController.h
 //  songgen
 //
 //  Created by Nathan Fuller on 10/24/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContentTypeViewController : UIViewController
+@interface KeywordPickerViewController : UIViewController
 
 @end
