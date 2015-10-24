@@ -12,7 +12,6 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
-
 @end
 
 @implementation ViewController

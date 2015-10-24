@@ -11,10 +11,11 @@
 
 @interface AppDelegate ()
 @property (nonatomic, strong) SPTSession *session;
-@property (nonatomic, strong) SPTAudioStreamingController *player; // possibly don't need this at all
 @end
 
 @implementation AppDelegate
+
+NSString *const PATH_CONST = @"http://localhost:3000/%@";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -23,12 +24,18 @@
     
     [[SPTAuth defaultInstance] setClientID: @"56f27508025e44f883156431203ca88d"];
     [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"songgen://callback"]];
-    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope]];
     
+    // Construct a login URL and open it
+    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+    
+    // Opening a URL in Safari close to application launch may trigger
+    // an iOS bug, so we wait a bit before doing so.
+    [application performSelector:@selector(openURL:)
+                      withObject:loginURL afterDelay:0.1];
     return YES;
 }
 
-+ (BOOL)application:(UIApplication *)application
+- (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
@@ -41,11 +48,35 @@
                 return;
             }
             
-            // Handle stuff
+            NSString *url = [NSString stringWithFormat:PATH_CONST, @"users/authenticate"];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
+                                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                               timeoutInterval:15.0];
+            
+            NSMutableDictionary *dataDict = [NSMutableDictionary new];
+            [dataDict setObject:[session accessToken] forKey:@"accessToken"];
+            [dataDict setObject:[session canonicalUsername] forKey:@"canonicalUsername"];
+            
+            NSError *err;
+            NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&err];
+            
+            if (err) {
+                NSLog(@"%@", err);
+            }
+            
+            [request setHTTPMethod:@"POST"];
+            [request setHTTPBody:postData];
+            
+            BOOL canHandle = [NSURLConnection canHandleRequest:request];
+            NSLog(@"%@", canHandle ? @"true" : @"false");
+            
+            NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            
             
         }];
         return YES;
     }
+    
     return NO;
 }
 
