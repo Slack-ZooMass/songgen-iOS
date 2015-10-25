@@ -13,6 +13,12 @@
 		87C9E16F1BDC1F9D002A30F5 /* KeywordPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E16E1BDC1F9D002A30F5 /* KeywordPickerViewController.m */; };
 		87C9E1721BDC3888002A30F5 /* SG_BottomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1701BDC3888002A30F5 /* SG_BottomBar.png */; };
 		87C9E1731BDC3888002A30F5 /* SG_TopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1711BDC3888002A30F5 /* SG_TopBar.png */; };
+		87C9E1841BDC913B002A30F5 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E17A1BDC913A002A30F5 /* ioapi.c */; };
+		87C9E1851BDC913B002A30F5 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E17C1BDC913A002A30F5 /* mztools.c */; };
+		87C9E1861BDC913B002A30F5 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E17E1BDC913A002A30F5 /* unzip.c */; };
+		87C9E1871BDC913B002A30F5 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E1801BDC913A002A30F5 /* zip.c */; };
+		87C9E1881BDC913B002A30F5 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E1831BDC913B002A30F5 /* SSZipArchive.m */; };
+		87C9E18A1BDC91F5002A30F5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C9E1891BDC91F5002A30F5 /* libz.tbd */; };
 		87ED98071BDB9B130070454A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98061BDB9B130070454A /* main.m */; };
 		87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98091BDB9B130070454A /* AppDelegate.m */; };
 		87ED980D1BDB9B130070454A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED980C1BDB9B130070454A /* ViewController.m */; };
@@ -55,6 +61,19 @@
 		87C9E1701BDC3888002A30F5 /* SG_BottomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SG_BottomBar.png; sourceTree = "<group>"; };
 		87C9E1711BDC3888002A30F5 /* SG_TopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SG_TopBar.png; sourceTree = "<group>"; };
 		87C9E1751BDC5170002A30F5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		87C9E1771BDC913A002A30F5 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		87C9E1791BDC913A002A30F5 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		87C9E17A1BDC913A002A30F5 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		87C9E17B1BDC913A002A30F5 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		87C9E17C1BDC913A002A30F5 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		87C9E17D1BDC913A002A30F5 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		87C9E17E1BDC913A002A30F5 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		87C9E17F1BDC913A002A30F5 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		87C9E1801BDC913A002A30F5 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		87C9E1811BDC913A002A30F5 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		87C9E1821BDC913B002A30F5 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		87C9E1831BDC913B002A30F5 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		87C9E1891BDC91F5002A30F5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87ED98021BDB9B130070454A /* songgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED98061BDB9B130070454A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87ED98081BDB9B130070454A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -82,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C9E18A1BDC91F5002A30F5 /* libz.tbd in Frameworks */,
 				87ED98401BDB9B890070454A /* SystemConfiguration.framework in Frameworks */,
 				87ED983E1BDB9B840070454A /* AVFoundation.framework in Frameworks */,
 				87ED983C1BDB9B700070454A /* Spotify.framework in Frameworks */,
@@ -130,9 +150,37 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		87C9E1761BDC913A002A30F5 /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				87C9E1771BDC913A002A30F5 /* Common.h */,
+				87C9E1781BDC913A002A30F5 /* minizip */,
+				87C9E1821BDC913B002A30F5 /* SSZipArchive.h */,
+				87C9E1831BDC913B002A30F5 /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		87C9E1781BDC913A002A30F5 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				87C9E1791BDC913A002A30F5 /* crypt.h */,
+				87C9E17A1BDC913A002A30F5 /* ioapi.c */,
+				87C9E17B1BDC913A002A30F5 /* ioapi.h */,
+				87C9E17C1BDC913A002A30F5 /* mztools.c */,
+				87C9E17D1BDC913A002A30F5 /* mztools.h */,
+				87C9E17E1BDC913A002A30F5 /* unzip.c */,
+				87C9E17F1BDC913A002A30F5 /* unzip.h */,
+				87C9E1801BDC913A002A30F5 /* zip.c */,
+				87C9E1811BDC913A002A30F5 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		87ED97F91BDB9B130070454A = {
 			isa = PBXGroup;
 			children = (
+				87C9E1761BDC913A002A30F5 /* SSZipArchive */,
 				87ED98381BDB9B1C0070454A /* Frameworks */,
 				87ED98041BDB9B130070454A /* songgen */,
 				87ED981E1BDB9B130070454A /* songgenTests */,
@@ -198,6 +246,7 @@
 		87ED98381BDB9B1C0070454A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				87C9E1891BDC91F5002A30F5 /* libz.tbd */,
 				87ED983F1BDB9B890070454A /* SystemConfiguration.framework */,
 				87ED983D1BDB9B840070454A /* AVFoundation.framework */,
 				87ED983B1BDB9B700070454A /* Spotify.framework */,
@@ -340,12 +389,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C9E1861BDC913B002A30F5 /* unzip.c in Sources */,
 				87ED980D1BDB9B130070454A /* ViewController.m in Sources */,
 				87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */,
+				87C9E1871BDC913B002A30F5 /* zip.c in Sources */,
+				87C9E1851BDC913B002A30F5 /* mztools.c in Sources */,
 				87C9E16F1BDC1F9D002A30F5 /* KeywordPickerViewController.m in Sources */,
 				87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */,
 				87C9E16B1BDC1D7C002A30F5 /* ImagePickerViewController.m in Sources */,
 				87ED98071BDB9B130070454A /* main.m in Sources */,
+				87C9E1841BDC913B002A30F5 /* ioapi.c in Sources */,
+				87C9E1881BDC913B002A30F5 /* SSZipArchive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

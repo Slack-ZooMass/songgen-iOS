@@ -9,7 +9,8 @@
 #import "ImagePickerViewController.h"
 
 @interface ImagePickerViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *generateButton;
+@property (weak, nonatomic) IBOutlet UIButton *editPhotosButton;
 @end
 
 @implementation ImagePickerViewController
@@ -23,6 +24,46 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)addPhotos:(id)sender {
+    if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO))
+        // TODO: Display some feedback for the user that they cannot use this feature.
+        // ALT TODO: Make this check at the previous screen to determine whether
+        // the "IMAGE" button even appears
+        return;
+    ipc = [[UIImagePickerController alloc] init];
+    ipc.delegate = self;
+    // TODO: see how app performs when we try other sources
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        [self presentViewController:ipc animated:YES completion:nil];
+    else
+    {
+        popover=[[UIPopoverController alloc] initWithContentViewController:ipc];
+        [popover presentPopoverFromRect:_addPhotosButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+}
+- (IBAction)editPhotos:(id)sender {
+}
+- (IBAction)generateButtonPressed:(id)sender {
+}
+
+#pragma mark - ImagePickerController Delegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [popover dismissPopoverAnimated:YES];
+    }
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

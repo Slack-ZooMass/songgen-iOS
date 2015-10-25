@@ -13,5 +13,5 @@
 {
     NSMutableData *_responseData;
 }
-@property (weak, nonatomic) AppDelegate *appDel;
+
 @end
