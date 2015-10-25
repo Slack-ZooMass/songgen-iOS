@@ -10,13 +10,9 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong) SPTSession *session;
 @end
 
 @implementation AppDelegate
-
-NSString *const PATH_CONST = @"http://localhost:3000/%@";
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -47,45 +43,11 @@ NSString *const PATH_CONST = @"http://localhost:3000/%@";
     // Ask SPTAuth if the URL given is a Spotify authentication callback
     if ([[SPTAuth defaultInstance] canHandleURL:url]) {
         [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
-            NSLog(@"%@",url);
-//            if (error != nil) {
-//                NSLog(@"*** Auth error: %@", error);
-//                return;
-//            }
-//            
-//            NSString *url = [NSString stringWithFormat:PATH_CONST, @"users/authenticate"];
-//            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-//                                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
-//                                                               timeoutInterval:15.0];
-//            
-//            NSMutableDictionary *dataDict = [NSMutableDictionary new];
-//            [dataDict setObject:[session accessToken] forKey:@"accessToken"];
-//            [dataDict setObject:[session canonicalUsername] forKey:@"canonicalUsername"];
-//            
-//            NSError *err;
-//            NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&err];
-//            
-//            if (err) {
-//                NSLog(@"%@", err);
-//            }
-//            
-//            [request setHTTPMethod:@"POST"];
-//            [request setHTTPBody:postData];
-//            
-//            BOOL canHandle = [NSURLConnection canHandleRequest:request];
-//            NSLog(@"%@", canHandle ? @"true" : @"false");
-//            
-//            NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-//            
+            _session = session;
             
         }];
         return YES;
     }
-    
-    return NO;
-}
-
-+ (BOOL)giveAccessToken:(NSString *)accessToken {
     
     return NO;
 }

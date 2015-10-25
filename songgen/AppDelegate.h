@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Spotify/Spotify.h>
 #import "AppDelegate.h"
 
 
@@ -15,7 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 FOUNDATION_EXPORT NSString *const PATH_CONST;
-
+@property (strong, nonatomic) SPTSession *session;
 @property (strong, nonatomic) UIWindow *window;
 
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface KeywordPickerViewController : UIViewController
-
+@interface KeywordPickerViewController : UIViewController<NSURLConnectionDelegate>
+{
+    NSMutableData *_responseData;
+}
+@property (weak, nonatomic) AppDelegate *appDel;
 @end
