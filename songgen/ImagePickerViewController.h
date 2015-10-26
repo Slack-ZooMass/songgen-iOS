@@ -16,4 +16,5 @@
     UIPopoverController *popover;
 }
 @property (weak, nonatomic) IBOutlet UIButton *addPhotosButton;
+@property (weak, nonatomic) IBOutlet UIImageView *ivPickedImage;
 @end

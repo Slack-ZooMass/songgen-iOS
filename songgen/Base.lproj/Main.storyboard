@@ -181,6 +181,10 @@
                                     <action selector="editPhotos:" destination="6zX-IX-toi" eventType="touchUpInside" id="ljR-D5-BDD"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV8-vt-SSL">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -203,6 +207,7 @@
                         <outlet property="addPhotosButton" destination="fet-k6-LAc" id="mQN-Je-ukl"/>
                         <outlet property="editPhotosButton" destination="Gtw-zP-BOa" id="lfV-Wz-UgB"/>
                         <outlet property="generateButton" destination="ozu-el-LQx" id="bQ2-A6-Pdb"/>
+                        <outlet property="ivPickedImage" destination="GV8-vt-SSL" id="Wto-pi-Be1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVh-P1-Pfc" userLabel="First Responder" sceneMemberID="firstResponder"/>

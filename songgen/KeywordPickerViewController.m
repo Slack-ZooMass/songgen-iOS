@@ -80,7 +80,6 @@
         [ret replaceObjectAtIndex:i withObject:trimmed];
     }
     NSArray *immutableCopy = [ret copy];
-    NSLog(@"%@", immutableCopy);
     return immutableCopy;
 }
 
