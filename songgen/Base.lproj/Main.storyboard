@@ -160,7 +160,7 @@
                                     <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="YoR-yG-3f2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fet-k6-LAc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fet-k6-LAc">
                                 <rect key="frame" x="499" y="99" width="30" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -181,29 +181,43 @@
                                     <action selector="editPhotos:" destination="6zX-IX-toi" eventType="touchUpInside" id="ljR-D5-BDD"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV8-vt-SSL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GV8-vt-SSL">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="X3t-CN-z7I"/>
+                                </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-DD-RXY">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="fet-k6-LAc" firstAttribute="top" secondItem="rya-Jh-A0b" secondAttribute="bottom" constant="35" id="4GA-PG-Drz"/>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="baseline" secondItem="Gtw-zP-BOa" secondAttribute="baseline" id="Ip9-E1-shi"/>
+                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="GV8-vt-SSL" secondAttribute="centerX" id="OVX-D1-whO"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="centerX" secondItem="ozu-el-LQx" secondAttribute="centerX" id="Qzd-Z9-bHN"/>
                             <constraint firstItem="Gtw-zP-BOa" firstAttribute="leading" secondItem="fet-k6-LAc" secondAttribute="trailing" constant="21" id="U2w-Nq-Gkf"/>
+                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerY" secondItem="bpI-uy-rAQ" secondAttribute="centerY" id="VUi-jX-b6Y"/>
                             <constraint firstItem="4ur-F8-JNp" firstAttribute="top" secondItem="rya-Jh-A0b" secondAttribute="bottom" id="WGM-bk-JCU"/>
+                            <constraint firstItem="GV8-vt-SSL" firstAttribute="top" secondItem="4ur-F8-JNp" secondAttribute="bottom" constant="72" id="ZnQ-gY-a8m"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="leading" secondItem="bpI-uy-rAQ" secondAttribute="leading" id="b4z-fE-Fpa"/>
                             <constraint firstAttribute="trailing" secondItem="4ur-F8-JNp" secondAttribute="trailing" id="cuw-j7-fvi"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="trailing" secondItem="4ur-F8-JNp" secondAttribute="trailing" id="d9u-rs-krU"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="leading" secondItem="4ur-F8-JNp" secondAttribute="leading" id="dpP-cY-R67"/>
+                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="4ur-F8-JNp" secondAttribute="centerX" id="fPD-Du-zIN"/>
                             <constraint firstItem="Gtw-zP-BOa" firstAttribute="trailing" secondItem="bpI-uy-rAQ" secondAttribute="trailingMargin" id="nGG-QB-M6A"/>
                             <constraint firstItem="ozu-el-LQx" firstAttribute="centerY" secondItem="qQq-Id-H8h" secondAttribute="centerY" id="sZZ-hh-Xbl"/>
+                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerY" secondItem="GV8-vt-SSL" secondAttribute="centerY" id="t62-40-dfs"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="bottom" secondItem="AUS-jm-gcB" secondAttribute="top" id="wPc-JU-tFc"/>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="centerY" secondItem="4ur-F8-JNp" secondAttribute="centerY" id="yZR-XR-V45"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="iUJ-DD-RXY" id="WU3-HD-NjP"/>
                         <outlet property="addPhotosButton" destination="fet-k6-LAc" id="mQN-Je-ukl"/>
                         <outlet property="editPhotosButton" destination="Gtw-zP-BOa" id="lfV-Wz-UgB"/>
                         <outlet property="generateButton" destination="ozu-el-LQx" id="bQ2-A6-Pdb"/>

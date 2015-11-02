@@ -11,32 +11,38 @@
 @import MobileCoreServices;
 
 @interface ImagePickerViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UIButton *generateButton;
 @property (weak, nonatomic) IBOutlet UIButton *editPhotosButton;
 @end
 
-@implementation ImagePickerViewController
+@implementation ImagePickerViewController {
+    NSString *pathToFile;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [_activityView setHidesWhenStopped:YES];
+    [self.view addSubview: _activityView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)addPhotos:(id)sender {
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO)) {
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSString *myFile = [mainBundle pathForResource: @"test" ofType: @"zip"];
         if([[NSFileManager defaultManager] fileExistsAtPath:myFile]) {
-            [self getPlaylist:myFile];
+            pathToFile = myFile;
         }
         return;
     }
     ipc = [[UIImagePickerController alloc] init];
     ipc.delegate = self;
+    
     // TODO: see how app performs when we try other sources
     ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
@@ -52,11 +58,12 @@
     // TODO: implement ability to let users remove/change which photos they've picked
 }
 - (IBAction)generateButtonPressed:(id)sender {
-    // TODO: Handle button press for images slected
+    [self getPlaylist:pathToFile];
+    [_activityView startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
 }
 
 - (void)getPlaylist:(NSString *)pathToZip {
-    // NSLog(pathToZip);
     
     NSString *url = [NSString stringWithFormat:PATH_CONST, @"/build-playlist/with-images"];
     
@@ -85,6 +92,7 @@
     request.HTTPBody = httpBody;
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
 }
 
 /**
@@ -151,8 +159,6 @@
     return httpBody;
 }
 
-
-
 #pragma mark - ImagePickerController Delegate
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -167,7 +173,7 @@
     if ([mediaType isEqualToString:@"public.image"]) {
         UIImage *editedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         if (!editedImage) {
-            NSLog(@"Ya fucked up");
+            NSLog(@"Ya done messed up");
         }
         NSData *webData = UIImagePNGRepresentation(editedImage);
         [webData writeToFile:imagePath atomically:YES];
@@ -188,7 +194,7 @@
         NSLog(@"%d",(int)[directoryConten count]);
         
         if([fileManager fileExistsAtPath: path])
-            [self getPlaylist:path];
+            pathToFile;
             
     }
     
@@ -222,7 +228,15 @@
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     // request is complete and data has been received, parse stuff in variable now
-    // NSLog(@"Request body %@", [[NSString alloc]initWithData:_responseData encoding:NSUTF8StringEncoding]);
+    
+    if (_activityView != nil) {
+        [_activityView stopAnimating];
+    }
+    
+    // stop ignoring input
+    
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    
     NSString *playlist = [[NSString alloc]initWithData:_responseData encoding:NSUTF8StringEncoding];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
