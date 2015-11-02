@@ -8,6 +8,7 @@
 
 #import "ImagePickerViewController.h"
 #import "SSZipArchive.h"
+@import MobileCoreServices;
 
 @interface ImagePickerViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *generateButton;
@@ -58,37 +59,98 @@
     // NSLog(pathToZip);
     
     NSString *url = [NSString stringWithFormat:PATH_CONST, @"/build-playlist/with-images"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:15.0];
-    
-    NSData *theData = [NSData dataWithContentsOfFile:pathToZip];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     SPTSession *session = appDelegate.session;
     
-    NSMutableDictionary *dataDict = [NSMutableDictionary new];
-    [dataDict setObject:[session accessToken] forKey:@"access_token"];
-    [dataDict setObject:[session canonicalUsername] forKey:@"user_id"];
-    [dataDict setObject:theData forKey:@"file"];
+    NSDictionary *params = @{@"user_id"     : [session canonicalUsername],
+                             @"access_token"    : [session accessToken]};
     
-    NSError *err;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&err];
+    NSString *boundary = [self generateBoundaryString];
     
-    if (err) {
-        NSLog(@"%@", err);
-    }
+    // configure the request
     
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:postData];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    if ([NSURLConnection canHandleRequest:request]) {
-        // TODO: provide some feedback that there may be connection issues?
-    }
+    // set content type
+    
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // create body
+    
+    NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params paths:@[pathToZip] fieldName:@"images_file"];
+    
+    request.HTTPBody = httpBody;
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
+/**
+ Source: http://stackoverflow.com/questions/24250475/post-multipart-form-data-with-objective-c
+ */
+- (NSString *)generateBoundaryString
+{
+    return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
+}
+
+/**
+ Source: http://stackoverflow.com/questions/24250475/post-multipart-form-data-with-objective-c
+ */
+- (NSString *)mimeTypeForPath:(NSString *)path
+{
+    // get a mime type for an extension using MobileCoreServices.framework
+    
+    CFStringRef extension = (__bridge CFStringRef)[path pathExtension];
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, extension, NULL);
+    assert(UTI != NULL);
+    
+    NSString *mimetype = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType));
+    assert(mimetype != NULL);
+    
+    CFRelease(UTI);
+    
+    return mimetype;
+}
+
+/**
+ Source: http://stackoverflow.com/questions/24250475/post-multipart-form-data-with-objective-c
+ */
+- (NSData *)createBodyWithBoundary:(NSString *)boundary
+                        parameters:(NSDictionary *)parameters
+                             paths:(NSArray *)paths
+                         fieldName:(NSString *)fieldName
+{
+    NSMutableData *httpBody = [NSMutableData data];
+    
+    // add params (all params are strings)
+    
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+    }];
+    
+    // add image data
+    
+    for (NSString *path in paths) {
+        NSString *filename  = [path lastPathComponent];
+        NSData   *data      = [NSData dataWithContentsOfFile:path];
+        NSString *mimetype  = [self mimeTypeForPath:path];
+        
+        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", fieldName, filename] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimetype] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:data];
+        [httpBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [httpBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    return httpBody;
+}
+
 
 
 #pragma mark - ImagePickerController Delegate
