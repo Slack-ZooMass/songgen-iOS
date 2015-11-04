@@ -82,11 +82,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_SplitscreenBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="rQa-HL-9iW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-9u-lh2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-9u-lh2">
                                 <rect key="frame" x="-50" y="385" width="691" height="157"/>
                                 <animations/>
                                 <state key="normal" image="byKeyword"/>
@@ -94,27 +90,24 @@
                                     <segue destination="SMb-t7-3lB" kind="show" identifier="ChooseKeywordsSeqgue" id="X8L-04-Dbv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rg-wya">
-                                <rect key="frame" x="-45" y="148" width="691" height="157"/>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOV-b1-SeG">
+                                <rect key="frame" x="-5" y="0.0" width="600" height="301"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rg-wya">
+                                        <rect key="frame" x="-45" y="72" width="691" height="157"/>
+                                        <animations/>
+                                        <state key="normal" image="byImages"/>
+                                        <connections>
+                                            <segue destination="6zX-IX-toi" kind="show" identifier="ChooseImagesSeqgue" id="FHa-dV-Rqr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <state key="normal" image="byImages"/>
-                                <connections>
-                                    <segue destination="6zX-IX-toi" kind="show" identifier="ChooseImagesSeqgue" id="FHa-dV-Rqr"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rQa-HL-9iW" firstAttribute="bottom" secondItem="Y4r-W7-LU6" secondAttribute="top" id="6uR-AW-JbB"/>
-                            <constraint firstItem="DqK-rg-wya" firstAttribute="centerX" secondItem="LFO-TZ-ldC" secondAttribute="centerX" id="C2k-7R-8kM"/>
-                            <constraint firstItem="7z0-9u-lh2" firstAttribute="top" secondItem="DqK-rg-wya" secondAttribute="bottom" constant="80" id="EMR-wN-kyQ"/>
-                            <constraint firstAttribute="trailing" secondItem="rQa-HL-9iW" secondAttribute="trailing" id="IoC-RH-0Sk"/>
-                            <constraint firstItem="rQa-HL-9iW" firstAttribute="top" secondItem="LFO-TZ-ldC" secondAttribute="top" id="QIq-Ls-H7O"/>
-                            <constraint firstItem="Y4r-W7-LU6" firstAttribute="top" secondItem="7z0-9u-lh2" secondAttribute="bottom" constant="58" id="gyu-Ds-Tz0"/>
-                            <constraint firstItem="rQa-HL-9iW" firstAttribute="leading" secondItem="LFO-TZ-ldC" secondAttribute="leading" id="jKt-mG-m4Z"/>
-                            <constraint firstItem="7z0-9u-lh2" firstAttribute="centerX" secondItem="LFO-TZ-ldC" secondAttribute="centerX" id="nRM-h2-xGE"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="chooseByImgBtn" destination="DqK-rg-wya" id="EUM-ds-afV"/>
@@ -151,15 +144,6 @@
                                     <constraint firstAttribute="height" constant="81" id="e4I-ar-EBl"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-el-LQx">
-                                <rect key="frame" x="-44" y="517" width="688" height="85"/>
-                                <animations/>
-                                <state key="normal" image="generate"/>
-                                <connections>
-                                    <action selector="generateButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="Nvv-q3-M50"/>
-                                    <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="YoR-yG-3f2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fet-k6-LAc">
                                 <rect key="frame" x="499" y="99" width="30" height="30"/>
                                 <animations/>
@@ -192,6 +176,15 @@
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
                                 <animations/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-el-LQx">
+                                <rect key="frame" x="-44" y="507" width="688" height="85"/>
+                                <animations/>
+                                <state key="normal" image="generate"/>
+                                <connections>
+                                    <action selector="generateButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="Nvv-q3-M50"/>
+                                    <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="YoR-yG-3f2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,7 +203,7 @@
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="leading" secondItem="4ur-F8-JNp" secondAttribute="leading" id="dpP-cY-R67"/>
                             <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="4ur-F8-JNp" secondAttribute="centerX" id="fPD-Du-zIN"/>
                             <constraint firstItem="Gtw-zP-BOa" firstAttribute="trailing" secondItem="bpI-uy-rAQ" secondAttribute="trailingMargin" id="nGG-QB-M6A"/>
-                            <constraint firstItem="ozu-el-LQx" firstAttribute="centerY" secondItem="qQq-Id-H8h" secondAttribute="centerY" id="sZZ-hh-Xbl"/>
+                            <constraint firstItem="ozu-el-LQx" firstAttribute="centerY" secondItem="qQq-Id-H8h" secondAttribute="centerY" constant="-10" id="sZZ-hh-Xbl"/>
                             <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerY" secondItem="GV8-vt-SSL" secondAttribute="centerY" id="t62-40-dfs"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="bottom" secondItem="AUS-jm-gcB" secondAttribute="top" id="wPc-JU-tFc"/>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="centerY" secondItem="4ur-F8-JNp" secondAttribute="centerY" id="yZR-XR-V45"/>
@@ -301,7 +294,6 @@
     </scenes>
     <resources>
         <image name="SG_BottomBar.png" width="750" height="161"/>
-        <image name="SG_SplitscreenBG.png" width="750" height="1334"/>
         <image name="SG_TopBar.png" width="750" height="135"/>
         <image name="byImages" width="691" height="157"/>
         <image name="byKeyword" width="691" height="157"/>
