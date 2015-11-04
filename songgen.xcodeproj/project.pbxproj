@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87C2126C1BEA530800A01EF7 /* test.zip in Resources */ = {isa = PBXBuildFile; fileRef = 87C2126B1BEA530800A01EF7 /* test.zip */; };
 		87C9E1651BDC1351002A30F5 /* ContentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */; };
 		87C9E1681BDC152D002A30F5 /* SG_SplitscreenBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */; };
 		87C9E16B1BDC1D7C002A30F5 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9E16A1BDC1D7C002A30F5 /* ImagePickerViewController.m */; };
@@ -31,7 +32,6 @@
 		87C9E1AD1BDCA38E002A30F5 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1A11BDCA38E002A30F5 /* ELCAssetTablePicker.xib */; };
 		87C9E1AE1BDCA38E002A30F5 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1A21BDCA38E002A30F5 /* Overlay.png */; };
 		87C9E1AF1BDCA38E002A30F5 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1A31BDCA38E002A30F5 /* Overlay@2x.png */; };
-		87C9E1B11BDD08AB002A30F5 /* test.zip in Resources */ = {isa = PBXBuildFile; fileRef = 87C9E1B01BDD08AB002A30F5 /* test.zip */; };
 		87ED98071BDB9B130070454A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98061BDB9B130070454A /* main.m */; };
 		87ED980A1BDB9B130070454A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED98091BDB9B130070454A /* AppDelegate.m */; };
 		87ED980D1BDB9B130070454A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED980C1BDB9B130070454A /* ViewController.m */; };
@@ -64,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87C2126B1BEA530800A01EF7 /* test.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test.zip; sourceTree = "<group>"; };
 		87C9E1631BDC1351002A30F5 /* ContentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeViewController.h; sourceTree = "<group>"; };
 		87C9E1641BDC1351002A30F5 /* ContentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeViewController.m; sourceTree = "<group>"; };
 		87C9E1671BDC152D002A30F5 /* SG_SplitscreenBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SG_SplitscreenBG.png; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		87C9E1A11BDCA38E002A30F5 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
 		87C9E1A21BDCA38E002A30F5 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
 		87C9E1A31BDCA38E002A30F5 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
-		87C9E1B01BDD08AB002A30F5 /* test.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test.zip; sourceTree = "<group>"; };
 		87ED98021BDB9B130070454A /* songgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED98061BDB9B130070454A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		87ED98081BDB9B130070454A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		87C9E1B21BDD0DED002A30F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				87C9E1B01BDD08AB002A30F5 /* test.zip */,
+				87C2126B1BEA530800A01EF7 /* test.zip */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -444,7 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C9E1721BDC3888002A30F5 /* SG_BottomBar.png in Resources */,
-				87C9E1B11BDD08AB002A30F5 /* test.zip in Resources */,
+				87C2126C1BEA530800A01EF7 /* test.zip in Resources */,
 				87C9E1731BDC3888002A30F5 /* SG_TopBar.png in Resources */,
 				87C9E1AD1BDCA38E002A30F5 /* ELCAssetTablePicker.xib in Resources */,
 				87ED98421BDBAE3F0070454A /* keys.plist in Resources */,
