@@ -90,7 +90,7 @@
                                     <segue destination="SMb-t7-3lB" kind="show" identifier="ChooseKeywordsSeqgue" id="X8L-04-Dbv"/>
                                 </connections>
                             </button>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOV-b1-SeG">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOV-b1-SeG">
                                 <rect key="frame" x="-5" y="0.0" width="600" height="301"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rg-wya">
@@ -103,7 +103,6 @@
                                     </button>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <animations/>
@@ -264,10 +263,15 @@
                                     <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="7yb-DH-alT"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-Gj-RNa">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="nXT-Gj-RNa" firstAttribute="centerY" secondItem="oVU-uf-HOT" secondAttribute="centerY" id="HX1-ee-nRl"/>
                             <constraint firstItem="Vq6-7A-Shz" firstAttribute="bottom" secondItem="t9u-8s-2fd" secondAttribute="top" id="PZR-rj-uVw"/>
                             <constraint firstItem="UQW-Zx-u9Z" firstAttribute="leading" secondItem="oVU-uf-HOT" secondAttribute="leadingMargin" constant="13" id="TLb-f9-Byq"/>
                             <constraint firstItem="L31-e1-odK" firstAttribute="centerX" secondItem="UQW-Zx-u9Z" secondAttribute="centerX" id="UPe-CE-vSk"/>
@@ -280,16 +284,18 @@
                             <constraint firstItem="UQW-Zx-u9Z" firstAttribute="centerY" secondItem="L31-e1-odK" secondAttribute="centerY" id="jNz-Tt-sCE"/>
                             <constraint firstItem="Vq6-7A-Shz" firstAttribute="trailing" secondItem="L31-e1-odK" secondAttribute="trailing" id="rmx-sJ-lGJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="cAH-yF-WvI" secondAttribute="bottom" constant="-2" id="u5H-TM-aXF"/>
+                            <constraint firstItem="nXT-Gj-RNa" firstAttribute="centerX" secondItem="UQW-Zx-u9Z" secondAttribute="centerX" id="yAq-CM-3eB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="nXT-Gj-RNa" id="Jay-y9-aQg"/>
                         <outlet property="generateButton" destination="cAH-yF-WvI" id="mbz-aS-Kx5"/>
                         <outlet property="keywordInput" destination="UQW-Zx-u9Z" id="piT-Jw-ezJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKT-fj-kEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="974"/>
+            <point key="canvasLocation" x="-401" y="984"/>
         </scene>
     </scenes>
     <resources>

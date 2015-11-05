@@ -8,6 +8,7 @@
 
 #import <Spotify/Spotify.h>
 #import "AppDelegate.h"
+#import "Utils.h"
 
 @interface AppDelegate ()
 @end
@@ -17,13 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSDictionary *keys;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"keys" ofType:@"plist"];
-    
-    if (path)
-        keys = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSDictionary *priv = [Utils getPrivateResources];
         
-    [[SPTAuth defaultInstance] setClientID: keys[@"spotifyClientID"]];
+    [[SPTAuth defaultInstance] setClientID: priv[@"spotifyClientID"]];
     [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"songgen://callback"]];
     
     // Construct a login URL and open it

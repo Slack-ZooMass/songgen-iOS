@@ -8,6 +8,7 @@
 
 #import "ImagePickerViewController.h"
 #import "SSZipArchive.h"
+#import "Utils.h"
 @import MobileCoreServices;
 
 @interface ImagePickerViewController ()
@@ -32,6 +33,7 @@
 }
 
 - (IBAction)addPhotos:(id)sender {
+    
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO)) {
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSString *myFile = [mainBundle pathForResource: @"test" ofType: @"zip"];
@@ -58,14 +60,16 @@
     // TODO: implement ability to let users remove/change which photos they've picked
 }
 - (IBAction)generateButtonPressed:(id)sender {
-    [self getPlaylist:pathToFile];
     [_activityView startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [self getPlaylist:pathToFile];
 }
 
 - (void)getPlaylist:(NSString *)pathToZip {
     
-    NSString *url = [NSString stringWithFormat:PATH_CONST, @"/build-playlist/with-images"];
+    NSString *base = [Utils getBaseUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@",base, @"/build-playlist/with-images"];
+    NSLog(@"%@", url);
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     SPTSession *session = appDelegate.session;
@@ -194,7 +198,7 @@
         NSLog(@"%d",(int)[directoryConten count]);
         
         if([fileManager fileExistsAtPath: path])
-            pathToFile;
+            pathToFile = path;
             
     }
     

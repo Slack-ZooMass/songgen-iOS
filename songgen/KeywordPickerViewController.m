@@ -8,9 +8,10 @@
 
 #import "KeywordPickerViewController.h"
 #import <Spotify/Spotify.h>
-#import "Constants.h"
+#import "Utils.h"
 
 @interface KeywordPickerViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet UIButton *generateButton;
 @property (weak, nonatomic) IBOutlet UITextField *keywordInput;
 @end
@@ -19,7 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [_activityView setHidesWhenStopped:YES];
+    [self.view addSubview: _activityView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +36,8 @@
 }
 
 - (IBAction)generateButtonPressed:(id)sender {
+    [_activityView startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     NSString *keywordString = [self.keywordInput text];
     NSArray *keywordArray = [KeywordPickerViewController buildKeywordArray: keywordString];
     [self getPlaylist:keywordArray];
@@ -41,7 +45,8 @@
 
 - (void)getPlaylist:(NSArray *)keywords {
     
-    NSString *url = [NSString stringWithFormat:PATH_CONST, @"/build-playlist/with-words"];
+    NSString *base = [Utils getBaseUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@", base, @"/build-playlist/with-words"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:15.0];
@@ -101,6 +106,11 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     // request is complete and data has been received, parse stuff in variable now
     // NSLog(@"Request body %@", [[NSString alloc]initWithData:_responseData encoding:NSUTF8StringEncoding]);
+    
+    if (_activityView != nil) {
+        [_activityView stopAnimating];
+    }
+    
     NSString *playlist = [[NSString alloc]initWithData:_responseData encoding:NSUTF8StringEncoding];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
