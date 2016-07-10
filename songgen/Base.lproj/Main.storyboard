@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rv9-mH-vBI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="O85-XV-FL8"/>
@@ -21,12 +20,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0W-Gd-7L5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2616" y="643"/>
+            <point key="canvasLocation" x="-1952" y="907"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="songgen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -37,7 +36,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-pZ-bcw">
                                 <rect key="frame" x="56" y="366" width="488" height="88"/>
-                                <animations/>
                                 <state key="normal" image="getStartedButton"/>
                                 <connections>
                                     <segue destination="5E3-GY-HGH" kind="show" identifier="ChooseContentSeque" id="pFl-MO-l38"/>
@@ -45,14 +43,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-xy-XrJ">
                                 <rect key="frame" x="56" y="256" width="488" height="88"/>
-                                <animations/>
                                 <state key="normal" image="loginButton"/>
                                 <connections>
-                                    <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g3A-Ls-Q37"/>
+                                    <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhX-qS-pn7"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0ur-en-O79"/>
@@ -63,17 +59,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="jMs-jw-kJn"/>
                     <connections>
-                        <outlet property="loginButton" destination="QTj-xy-XrJ" id="j0i-Nm-q1w"/>
+                        <outlet property="getStartedButton" destination="ald-pZ-bcw" id="XWf-UQ-qgl"/>
+                        <outlet property="loginButton" destination="QTj-xy-XrJ" id="vJz-8d-OzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1847" y="621"/>
+            <point key="canvasLocation" x="-1183" y="885"/>
         </scene>
         <!--Content Type View Controller-->
         <scene sceneID="vEu-04-rJq">
             <objects>
-                <viewController id="5E3-GY-HGH" customClass="ContentTypeViewController" sceneMemberID="viewController">
+                <viewController id="5E3-GY-HGH" customClass="ContentTypeViewController" customModule="songgen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XhT-4a-NK1"/>
                         <viewControllerLayoutGuide type="bottom" id="Y4r-W7-LU6"/>
@@ -84,10 +81,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-9u-lh2">
                                 <rect key="frame" x="-50" y="385" width="691" height="157"/>
-                                <animations/>
                                 <state key="normal" image="byKeyword"/>
                                 <connections>
-                                    <segue destination="SMb-t7-3lB" kind="show" identifier="ChooseKeywordsSeqgue" id="X8L-04-Dbv"/>
+                                    <segue destination="SMb-t7-3lB" kind="show" id="4WM-aw-94m"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOV-b1-SeG">
@@ -95,32 +91,29 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqK-rg-wya">
                                         <rect key="frame" x="-45" y="72" width="691" height="157"/>
-                                        <animations/>
                                         <state key="normal" image="byImages"/>
                                         <connections>
-                                            <segue destination="6zX-IX-toi" kind="show" identifier="ChooseImagesSeqgue" id="FHa-dV-Rqr"/>
+                                            <segue destination="6zX-IX-toi" kind="show" id="PDM-kF-Uoa"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="chooseByImgBtn" destination="DqK-rg-wya" id="EUM-ds-afV"/>
-                        <outlet property="chooseByKeywordBtn" destination="7z0-9u-lh2" id="Ioc-9J-vsS"/>
+                        <outlet property="chooseImagesButton" destination="DqK-rg-wya" id="ZuI-dz-mqL"/>
+                        <outlet property="chooseKeywordsButton" destination="7z0-9u-lh2" id="9xz-JK-Hhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNv-0O-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="621"/>
+            <point key="canvasLocation" x="-462" y="885"/>
         </scene>
         <!--Image Picker View Controller-->
         <scene sceneID="ixR-CO-ZKL">
             <objects>
-                <viewController id="6zX-IX-toi" customClass="ImagePickerViewController" sceneMemberID="viewController">
+                <viewController id="6zX-IX-toi" customClass="ImagePickerViewController" customModule="songgen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rya-Jh-A0b"/>
                         <viewControllerLayoutGuide type="bottom" id="AUS-jm-gcB"/>
@@ -131,61 +124,52 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_TopBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="4ur-F8-JNp">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="2AZ-fU-r4T"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_BottomBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="qQq-Id-H8h">
                                 <rect key="frame" x="0.0" y="519" width="600" height="81"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="e4I-ar-EBl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fet-k6-LAc">
                                 <rect key="frame" x="499" y="99" width="30" height="30"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addPhotos:" destination="6zX-IX-toi" eventType="touchUpInside" id="35j-bQ-z06"/>
+                                    <action selector="addPhotosButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="j5b-AG-qjH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtw-zP-BOa">
                                 <rect key="frame" x="550" y="102" width="30" height="30"/>
-                                <animations/>
                                 <state key="normal" title="Edit">
                                     <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="editPhotos:" destination="6zX-IX-toi" eventType="touchUpInside" id="ljR-D5-BDD"/>
+                                    <action selector="editPhotosButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="7KD-WZ-fQA"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GV8-vt-SSL">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="X3t-CN-z7I"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-DD-RXY">
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <animations/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-el-LQx">
                                 <rect key="frame" x="-44" y="507" width="688" height="85"/>
-                                <animations/>
                                 <state key="normal" image="generate"/>
                                 <connections>
-                                    <action selector="generateButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="Nvv-q3-M50"/>
-                                    <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="YoR-yG-3f2"/>
+                                    <action selector="generateButtonPressed:" destination="6zX-IX-toi" eventType="touchUpInside" id="L4d-x3-sTf"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="top" secondItem="rya-Jh-A0b" secondAttribute="bottom" constant="35" id="4GA-PG-Drz"/>
@@ -209,21 +193,20 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="iUJ-DD-RXY" id="WU3-HD-NjP"/>
-                        <outlet property="addPhotosButton" destination="fet-k6-LAc" id="mQN-Je-ukl"/>
-                        <outlet property="editPhotosButton" destination="Gtw-zP-BOa" id="lfV-Wz-UgB"/>
-                        <outlet property="generateButton" destination="ozu-el-LQx" id="bQ2-A6-Pdb"/>
-                        <outlet property="ivPickedImage" destination="GV8-vt-SSL" id="Wto-pi-Be1"/>
+                        <outlet property="activityView" destination="iUJ-DD-RXY" id="b4n-SC-kdL"/>
+                        <outlet property="addPhotosButton" destination="fet-k6-LAc" id="oCd-Kc-Efq"/>
+                        <outlet property="editPhotosButton" destination="Gtw-zP-BOa" id="jbb-m3-E54"/>
+                        <outlet property="generateButton" destination="ozu-el-LQx" id="qst-TU-GsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVh-P1-Pfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="311"/>
+            <point key="canvasLocation" x="263" y="575"/>
         </scene>
         <!--Keyword Picker View Controller-->
         <scene sceneID="Z5s-r6-qAZ">
             <objects>
-                <viewController id="SMb-t7-3lB" customClass="KeywordPickerViewController" sceneMemberID="viewController">
+                <viewController id="SMb-t7-3lB" customClass="KeywordPickerViewController" customModule="songgen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5qK-eq-9ra"/>
                         <viewControllerLayoutGuide type="bottom" id="t9u-8s-2fd"/>
@@ -234,41 +217,35 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_TopBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="L31-e1-odK">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
-                                <animations/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SG_BottomBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vq6-7A-Shz">
                                 <rect key="frame" x="0.0" y="519" width="600" height="81"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="4YA-FE-jjz"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQW-Zx-u9Z">
                                 <rect key="frame" x="33" y="99" width="535" height="30"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WWl-zb-pIw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="SMb-t7-3lB" id="yHY-XP-6H1"/>
+                                    <outlet property="delegate" destination="SMb-t7-3lB" id="Ylf-In-fCk"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAH-yF-WvI">
                                 <rect key="frame" x="-44" y="517" width="688" height="85"/>
-                                <animations/>
                                 <state key="normal" image="generate"/>
                                 <connections>
-                                    <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="7yb-DH-alT"/>
+                                    <action selector="generateButtonPressed:" destination="SMb-t7-3lB" eventType="touchUpInside" id="0dl-HJ-eA2"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-Gj-RNa">
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <animations/>
                             </activityIndicatorView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nXT-Gj-RNa" firstAttribute="centerY" secondItem="oVU-uf-HOT" secondAttribute="centerY" id="HX1-ee-nRl"/>
@@ -288,14 +265,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="nXT-Gj-RNa" id="Jay-y9-aQg"/>
-                        <outlet property="generateButton" destination="cAH-yF-WvI" id="mbz-aS-Kx5"/>
-                        <outlet property="keywordInput" destination="UQW-Zx-u9Z" id="piT-Jw-ezJ"/>
+                        <outlet property="activityView" destination="nXT-Gj-RNa" id="f0A-Y4-ePp"/>
+                        <outlet property="generateButton" destination="cAH-yF-WvI" id="gzb-rU-o9W"/>
+                        <outlet property="keywordInput" destination="UQW-Zx-u9Z" id="TtV-UU-5xs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKT-fj-kEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="984"/>
+            <point key="canvasLocation" x="263" y="1248"/>
         </scene>
     </scenes>
     <resources>

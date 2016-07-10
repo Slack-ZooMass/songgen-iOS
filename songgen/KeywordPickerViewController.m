@@ -8,7 +8,6 @@
 
 #import "KeywordPickerViewController.h"
 #import <Spotify/Spotify.h>
-#import "Utils.h"
 
 @interface KeywordPickerViewController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
@@ -51,7 +50,7 @@
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:15.0];
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate]
     SPTSession *session = appDelegate.session;
     
     NSMutableDictionary *dataDict = [NSMutableDictionary new];

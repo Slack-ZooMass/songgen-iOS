@@ -8,7 +8,6 @@
 
 #import "ImagePickerViewController.h"
 #import "SSZipArchive.h"
-#import "Utils.h"
 @import MobileCoreServices;
 
 @interface ImagePickerViewController ()
@@ -93,7 +92,7 @@
     
     NSData *httpBody = [self createBodyWithBoundary:boundary parameters:params paths:@[pathToZip] fieldName:@"images_file"];
     
-    request.HTTPBody = httpBody;
+     request.HTTPBody = httpBody;
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
