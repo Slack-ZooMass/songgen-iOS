@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841A326C1D4C6F2C008FA45B /* private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 841A326B1D4C6F2C008FA45B /* private.plist */; };
+		84B619301D4D572200E3747A /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6192F1D4D572200E3747A /* Spotify.framework */; };
 		8770AAC71D31BF4A001862D3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AAC61D31BF4A001862D3 /* SignInViewController.swift */; };
 		8770AAC91D31C9A5001862D3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AAC81D31C9A5001862D3 /* Utils.swift */; };
 		8770AACB1D31CBE9001862D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AACA1D31CBE9001862D3 /* AppDelegate.swift */; };
@@ -29,7 +30,6 @@
 		87ED98151BDB9B130070454A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87ED98131BDB9B130070454A /* LaunchScreen.storyboard */; };
 		87ED98201BDB9B130070454A /* songgenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED981F1BDB9B130070454A /* songgenTests.m */; };
 		87ED982B1BDB9B130070454A /* songgenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED982A1BDB9B130070454A /* songgenUITests.m */; };
-		87ED983C1BDB9B700070454A /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983B1BDB9B700070454A /* Spotify.framework */; };
 		87ED983E1BDB9B840070454A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983D1BDB9B840070454A /* AVFoundation.framework */; };
 		87ED98401BDB9B890070454A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983F1BDB9B890070454A /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		841A326B1D4C6F2C008FA45B /* private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = private.plist; sourceTree = "<group>"; };
+		84B6192F1D4D572200E3747A /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		8770AAC51D31BF4A001862D3 /* songgen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "songgen-Bridging-Header.h"; sourceTree = "<group>"; };
 		8770AAC61D31BF4A001862D3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8770AAC81D31C9A5001862D3 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		87ED98261BDB9B130070454A /* songgenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = songgenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED982A1BDB9B130070454A /* songgenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = songgenUITests.m; sourceTree = "<group>"; };
 		87ED982C1BDB9B130070454A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87ED983B1BDB9B700070454A /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		87ED983D1BDB9B840070454A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		87ED983F1BDB9B890070454A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -102,10 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B619301D4D572200E3747A /* Spotify.framework in Frameworks */,
 				87C9E18A1BDC91F5002A30F5 /* libz.tbd in Frameworks */,
 				87ED98401BDB9B890070454A /* SystemConfiguration.framework in Frameworks */,
 				87ED983E1BDB9B840070454A /* AVFoundation.framework in Frameworks */,
-				87ED983C1BDB9B700070454A /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +279,10 @@
 		87ED98381BDB9B1C0070454A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B6192F1D4D572200E3747A /* Spotify.framework */,
 				87C9E1891BDC91F5002A30F5 /* libz.tbd */,
 				87ED983F1BDB9B890070454A /* SystemConfiguration.framework */,
 				87ED983D1BDB9B840070454A /* AVFoundation.framework */,
-				87ED983B1BDB9B700070454A /* Spotify.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slackzoomass.songgen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65ed2d78-4f66-4d51-8c1e-7c4bb3515322";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "songgen/songgen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -609,7 +609,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slackzoomass.songgen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65ed2d78-4f66-4d51-8c1e-7c4bb3515322";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "songgen/songgen-Bridging-Header.h";
 			};
 			name = Release;
