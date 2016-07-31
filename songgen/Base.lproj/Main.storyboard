@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3JN-5O-05H">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -34,30 +34,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4im-Hs-KNg">
-                                <rect key="frame" x="56" y="207" width="488" height="186"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-xy-XrJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="488" height="88"/>
-                                        <state key="normal" image="loginButton"/>
-                                        <connections>
-                                            <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhX-qS-pn7"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-pZ-bcw">
-                                        <rect key="frame" x="0.0" y="98" width="488" height="88"/>
-                                        <state key="normal" image="getStartedButton"/>
-                                        <connections>
-                                            <segue destination="5E3-GY-HGH" kind="show" identifier="ChooseContentSeque" id="pFl-MO-l38"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-xy-XrJ">
+                                <rect key="frame" x="56" y="256" width="488" height="88"/>
+                                <state key="normal" image="loginButton"/>
+                                <connections>
+                                    <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhX-qS-pn7"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-pZ-bcw">
+                                <rect key="frame" x="56" y="256" width="488" height="88"/>
+                                <state key="normal" image="getStartedButton"/>
+                                <connections>
+                                    <segue destination="5E3-GY-HGH" kind="show" identifier="ChooseContentSeque" id="pFl-MO-l38"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4im-Hs-KNg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rJv-44-Ldf"/>
-                            <constraint firstItem="4im-Hs-KNg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vlM-gD-nKw"/>
+                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Cm-Uq-byc"/>
+                            <constraint firstItem="ald-pZ-bcw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PJD-ie-kth"/>
+                            <constraint firstItem="ald-pZ-bcw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kYW-fP-Lgs"/>
+                            <constraint firstItem="QTj-xy-XrJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uAi-d5-D7e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jMs-jw-kJn"/>
@@ -180,8 +177,8 @@
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="top" secondItem="rya-Jh-A0b" secondAttribute="bottom" constant="35" id="4GA-PG-Drz"/>
+                            <constraint firstItem="GV8-vt-SSL" firstAttribute="centerY" secondItem="bpI-uy-rAQ" secondAttribute="centerY" id="Aqc-PC-nKX"/>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="baseline" secondItem="Gtw-zP-BOa" secondAttribute="baseline" id="Ip9-E1-shi"/>
-                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="GV8-vt-SSL" secondAttribute="centerX" id="OVX-D1-whO"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="centerX" secondItem="ozu-el-LQx" secondAttribute="centerX" id="Qzd-Z9-bHN"/>
                             <constraint firstItem="Gtw-zP-BOa" firstAttribute="leading" secondItem="fet-k6-LAc" secondAttribute="trailing" constant="21" id="U2w-Nq-Gkf"/>
                             <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerY" secondItem="bpI-uy-rAQ" secondAttribute="centerY" id="VUi-jX-b6Y"/>
@@ -191,10 +188,10 @@
                             <constraint firstAttribute="trailing" secondItem="4ur-F8-JNp" secondAttribute="trailing" id="cuw-j7-fvi"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="trailing" secondItem="4ur-F8-JNp" secondAttribute="trailing" id="d9u-rs-krU"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="leading" secondItem="4ur-F8-JNp" secondAttribute="leading" id="dpP-cY-R67"/>
-                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="4ur-F8-JNp" secondAttribute="centerX" id="fPD-Du-zIN"/>
+                            <constraint firstItem="GV8-vt-SSL" firstAttribute="centerX" secondItem="bpI-uy-rAQ" secondAttribute="centerX" id="guy-KM-JQk"/>
                             <constraint firstItem="Gtw-zP-BOa" firstAttribute="trailing" secondItem="bpI-uy-rAQ" secondAttribute="trailingMargin" id="nGG-QB-M6A"/>
+                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerX" secondItem="bpI-uy-rAQ" secondAttribute="centerX" id="rER-eP-gW4"/>
                             <constraint firstItem="ozu-el-LQx" firstAttribute="centerY" secondItem="qQq-Id-H8h" secondAttribute="centerY" constant="-10" id="sZZ-hh-Xbl"/>
-                            <constraint firstItem="iUJ-DD-RXY" firstAttribute="centerY" secondItem="GV8-vt-SSL" secondAttribute="centerY" id="t62-40-dfs"/>
                             <constraint firstItem="qQq-Id-H8h" firstAttribute="bottom" secondItem="AUS-jm-gcB" secondAttribute="top" id="wPc-JU-tFc"/>
                             <constraint firstItem="fet-k6-LAc" firstAttribute="centerY" secondItem="4ur-F8-JNp" secondAttribute="centerY" id="yZR-XR-V45"/>
                         </constraints>

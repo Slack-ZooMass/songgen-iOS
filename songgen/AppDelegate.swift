@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
         guard let resources = Utils.getPrivateResources() else {
             return false
         }
@@ -32,7 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if auth.canHandleURL(url) {
             auth.handleAuthCallbackWithTriggeredAuthURL(url, callback: {
                 error, session in
-                self.session = session
+                
+                if let err = error {
+                    print("*** Auth error: \(err)")
+                } else {
+                    self.session = session
+                    NSNotificationCenter.defaultCenter().postNotificationName("didLogIn", object: nil)
+                }
             })
             
             return true
