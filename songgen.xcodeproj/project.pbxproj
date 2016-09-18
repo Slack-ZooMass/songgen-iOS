@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841A326C1D4C6F2C008FA45B /* private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 841A326B1D4C6F2C008FA45B /* private.plist */; };
+		84B619301D4D572200E3747A /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B6192F1D4D572200E3747A /* Spotify.framework */; };
 		8770AAC71D31BF4A001862D3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AAC61D31BF4A001862D3 /* SignInViewController.swift */; };
 		8770AAC91D31C9A5001862D3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AAC81D31C9A5001862D3 /* Utils.swift */; };
 		8770AACB1D31CBE9001862D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770AACA1D31CBE9001862D3 /* AppDelegate.swift */; };
@@ -28,10 +30,8 @@
 		87ED98151BDB9B130070454A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87ED98131BDB9B130070454A /* LaunchScreen.storyboard */; };
 		87ED98201BDB9B130070454A /* songgenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED981F1BDB9B130070454A /* songgenTests.m */; };
 		87ED982B1BDB9B130070454A /* songgenUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED982A1BDB9B130070454A /* songgenUITests.m */; };
-		87ED983C1BDB9B700070454A /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983B1BDB9B700070454A /* Spotify.framework */; };
 		87ED983E1BDB9B840070454A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983D1BDB9B840070454A /* AVFoundation.framework */; };
 		87ED98401BDB9B890070454A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED983F1BDB9B890070454A /* SystemConfiguration.framework */; };
-		87ED98421BDBAE3F0070454A /* private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87ED98411BDBAE3F0070454A /* private.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		841A326B1D4C6F2C008FA45B /* private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = private.plist; sourceTree = "<group>"; };
+		84B6192F1D4D572200E3747A /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		8770AAC51D31BF4A001862D3 /* songgen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "songgen-Bridging-Header.h"; sourceTree = "<group>"; };
 		8770AAC61D31BF4A001862D3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8770AAC81D31C9A5001862D3 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -91,10 +93,8 @@
 		87ED98261BDB9B130070454A /* songgenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = songgenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ED982A1BDB9B130070454A /* songgenUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = songgenUITests.m; sourceTree = "<group>"; };
 		87ED982C1BDB9B130070454A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87ED983B1BDB9B700070454A /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		87ED983D1BDB9B840070454A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		87ED983F1BDB9B890070454A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		87ED98411BDBAE3F0070454A /* private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = private.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B619301D4D572200E3747A /* Spotify.framework in Frameworks */,
 				87C9E18A1BDC91F5002A30F5 /* libz.tbd in Frameworks */,
 				87ED98401BDB9B890070454A /* SystemConfiguration.framework in Frameworks */,
 				87ED983E1BDB9B840070454A /* AVFoundation.framework in Frameworks */,
-				87ED983C1BDB9B700070454A /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841A326D1D4C6F72008FA45B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				87ED980E1BDB9B130070454A /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		876737A91BEAD4CA00283725 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,9 +155,9 @@
 		87C9E16C1BDC1EBE002A30F5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				87DB477C1D32B12F0074A2B8 /* KeywordPickerViewController.swift */,
 				8770AACE1D31DBE2001862D3 /* ContentTypeViewController.swift */,
 				8770AAD01D31DED7001862D3 /* ImagePickerViewController.swift */,
+				87DB477C1D32B12F0074A2B8 /* KeywordPickerViewController.swift */,
 				8770AAC61D31BF4A001862D3 /* SignInViewController.swift */,
 			);
 			name = ViewControllers;
@@ -226,16 +234,11 @@
 		87ED98041BDB9B130070454A /* songgen */ = {
 			isa = PBXGroup;
 			children = (
-				876737A91BEAD4CA00283725 /* Utils */,
-				87C9E1B21BDD0DED002A30F5 /* Resources */,
-				87C9E1661BDC1509002A30F5 /* img */,
 				8770AACA1D31CBE9001862D3 /* AppDelegate.swift */,
-				87C9E16C1BDC1EBE002A30F5 /* ViewControllers */,
-				87ED980E1BDB9B130070454A /* Main.storyboard */,
-				87ED98111BDB9B130070454A /* Assets.xcassets */,
-				87ED98131BDB9B130070454A /* LaunchScreen.storyboard */,
-				87ED98161BDB9B130070454A /* Info.plist */,
 				87ED98051BDB9B130070454A /* Supporting Files */,
+				876737A91BEAD4CA00283725 /* Utils */,
+				87C9E16C1BDC1EBE002A30F5 /* ViewControllers */,
+				841A326D1D4C6F72008FA45B /* Views */,
 			);
 			path = songgen;
 			sourceTree = "<group>";
@@ -243,9 +246,14 @@
 		87ED98051BDB9B130070454A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				87DB477A1D32247A0074A2B8 /* Old Obj-C Implementation */,
 				8770AAC51D31BF4A001862D3 /* songgen-Bridging-Header.h */,
-				87ED98411BDBAE3F0070454A /* private.plist */,
+				87ED98161BDB9B130070454A /* Info.plist */,
+				841A326B1D4C6F2C008FA45B /* private.plist */,
+				87ED98111BDB9B130070454A /* Assets.xcassets */,
+				87C9E1661BDC1509002A30F5 /* img */,
+				87ED98131BDB9B130070454A /* LaunchScreen.storyboard */,
+				87DB477A1D32247A0074A2B8 /* Old Obj-C Implementation */,
+				87C9E1B21BDD0DED002A30F5 /* Resources */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,10 +279,10 @@
 		87ED98381BDB9B1C0070454A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B6192F1D4D572200E3747A /* Spotify.framework */,
 				87C9E1891BDC91F5002A30F5 /* libz.tbd */,
 				87ED983F1BDB9B890070454A /* SystemConfiguration.framework */,
 				87ED983D1BDB9B840070454A /* AVFoundation.framework */,
-				87ED983B1BDB9B700070454A /* Spotify.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,8 +395,8 @@
 			files = (
 				87C9E1721BDC3888002A30F5 /* SG_BottomBar.png in Resources */,
 				87C2126C1BEA530800A01EF7 /* test.zip in Resources */,
+				841A326C1D4C6F2C008FA45B /* private.plist in Resources */,
 				87C9E1731BDC3888002A30F5 /* SG_TopBar.png in Resources */,
-				87ED98421BDBAE3F0070454A /* private.plist in Resources */,
 				87ED98151BDB9B130070454A /* LaunchScreen.storyboard in Resources */,
 				87C9E1681BDC152D002A30F5 /* SG_SplitscreenBG.png in Resources */,
 				87ED98121BDB9B130070454A /* Assets.xcassets in Resources */,

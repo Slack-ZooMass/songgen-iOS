@@ -14,6 +14,19 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(didLogIn),
+                                                         name: "didLogIn", object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,5 +43,12 @@ class SignInViewController: UIViewController {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> () in
             UIApplication.sharedApplication().openURL(loginURL)
         })
+    }
+    
+    @objc private func didLogIn() {
+        loginButton.hidden = true
+        loginButton.enabled = false
+        getStartedButton.hidden = false
+        getStartedButton.enabled = true
     }
 }
