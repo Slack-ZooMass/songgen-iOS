@@ -11,17 +11,16 @@ import UIKit
 
 class ImagePickerViewController: UIViewController, NSURLConnectionDataDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private var pathToFile: String?
-    private var ipc: UIImagePickerController!
-    private var responseData: NSMutableData!
+    fileprivate var pathToFile: String?
+    fileprivate var ipc: UIImagePickerController!
+    fileprivate var responseData: NSMutableData!
     
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var generateButton: UIButton!
-    @IBOutlet weak var addPhotosButton: UIButton!
-    @IBOutlet weak var editPhotosButton: UIButton!
+    @IBOutlet weak var editPhotosButton: UIBarButtonItem!
+    @IBOutlet weak var addPhotosButton: UIBarButtonItem!
     @IBOutlet weak var chosenImageView: UIImageView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,11 +34,11 @@ class ImagePickerViewController: UIViewController, NSURLConnectionDataDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addPhotosButtonPressed(sender: UIButton) {
-        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            let mainBundle = NSBundle.mainBundle()
-            if let fileStr = mainBundle.pathForResource("test", ofType: "zip") {
-                if NSFileManager.defaultManager().fileExistsAtPath(fileStr) {
+    @IBAction func addPhotosButtonPressed(_ sender: UIBarButtonItem) {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let mainBundle = Bundle.main
+            if let fileStr = mainBundle.path(forResource: "test", ofType: "zip") {
+                if FileManager.default.fileExists(atPath: fileStr) {
                     self.pathToFile = fileStr
                 }
             }
@@ -48,38 +47,38 @@ class ImagePickerViewController: UIViewController, NSURLConnectionDataDelegate, 
             self.ipc.delegate = self
             
             // TODO: see how app performs when we try other sources
-            self.ipc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.ipc.sourceType = UIImagePickerControllerSourceType.photoLibrary
             
-            if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone {
-                self.presentViewController(self.ipc, animated: true, completion: nil)
+            if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone {
+                self.present(self.ipc, animated: true, completion: nil)
             } else {
-                let sourceRect = CGRectMake(self.view.frame.size.width/2-200,
-                                            self.view.frame.size.height/2-300,
-                                            400, 400)
-                self.ipc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                self.presentViewController(self.ipc, animated: true, completion: nil)
+                let sourceRect = CGRect(x: self.view.frame.size.width/2-200,
+                                            y: self.view.frame.size.height/2-300,
+                                            width: 400, height: 400)
+                self.ipc.modalPresentationStyle = UIModalPresentationStyle.popover
+                self.present(self.ipc, animated: true, completion: nil)
                 self.ipc.popoverPresentationController?.sourceRect = sourceRect
                 self.ipc.popoverPresentationController?.sourceView = self.view
             }
         }
     }
     
-    @IBAction func editPhotosButtonPressed(sender: UIButton) {
+    @IBAction func editPhotosButtonPressed(_ sender: UIBarButtonItem) {
         // TODO: implement ability to let users remove/change which photo's they'e picked
     }
     
-    @IBAction func generateButtonPressed(sender: UIButton) {
+    @IBAction func generateButtonPressed(_ sender: UIButton) {
         self.activityView.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         self.getPlaylist(self.pathToFile)
     }
     
     // MARK: - ImagePickerController Delegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let imagePath = documentsDirectory.stringByAppendingString("/latest_photo.png")
+        let imagePath = documentsDirectory + "/latest_photo.png"
         
         // extracting image from the picker and saving it
         let mediaType = info[UIImagePickerControllerMediaType] as? String
@@ -90,103 +89,102 @@ class ImagePickerViewController: UIViewController, NSURLConnectionDataDelegate, 
             }
             
             let webData = UIImagePNGRepresentation(editedImage)
-            webData?.writeToFile(imagePath, atomically: true)
+            try? webData?.write(to: URL(fileURLWithPath: imagePath), options: [.atomic])
 
-            let fileManager = NSFileManager.defaultManager()
+            let fileManager = FileManager.default
 //            let directoryContent = try? fileManager.contentsOfDirectoryAtPath(documentsDirectory)
             
-            var path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
-            path = String(format: "%@/%@.zip", path, NSUUID().UUIDString)
+            var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+            path = String(format: "%@/%@.zip", path, UUID().uuidString)
             
             
 //            let success = SSZipArchive.createZipFileAtPath(path, withContentsOfDirectory: documentsDirectory)
 //            print("\(success)")
             
-            var zipDir = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
+            var zipDir = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
             zipDir = String(format: "%@/", zipDir)
             
 //            let zipDirectoryContent = try? fileManager.contentsOfDirectoryAtPath(zipDir)
             
-            if fileManager.fileExistsAtPath(path) {
+            if fileManager.fileExists(atPath: path) {
                 self.pathToFile = path
             }
         }
         
-        if UI_USER_INTERFACE_IDIOM() == .Phone {
-            picker.dismissViewControllerAnimated(true, completion: nil)
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            picker.dismiss(animated: true, completion: nil)
         } else {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Server Communication Handling
-    private func getPlaylist(pathToZip: String?) {
+    fileprivate func getPlaylist(_ pathToZip: String?) {
         // TODO: Might reevaluate current setup
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)),
-                       dispatch_get_main_queue(), { () ->() in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () ->() in
                         self.activityView.stopAnimating()
-                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                        UIApplication.shared.endIgnoringInteractionEvents()
         })
     }
     
-    private func generateBoundaryString() -> String? {
-        return String(format: "Boundary-%@", NSUUID().UUIDString)
+    fileprivate func generateBoundaryString() -> String? {
+        return String(format: "Boundary-%@", UUID().uuidString)
     }
     
-    private func mimeTypeForPath(path: String?) -> String? {
+    fileprivate func mimeTypeForPath(_ path: String?) -> String? {
         // TODO:
         return nil
     }
     
-    private func createBodyWithBoundary(boundary: String,
+    fileprivate func createBodyWithBoundary(_ boundary: String,
                                         paramaters: [String: AnyObject],
                                         paths: [String],
-                                        fieldName: String) -> NSData? {
+                                        fieldName: String) -> Data? {
         // TODO:
         return nil
     }
     
     // MARK: - NSURLConnection Delegate Methods
     
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         self.responseData = NSMutableData()
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.responseData.appendData(data)
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+        self.responseData.append(data)
     }
     
-    func connection(connection: NSURLConnection, willCacheResponse cachedResponse: NSCachedURLResponse) -> NSCachedURLResponse? {
+    func connection(_ connection: NSURLConnection, willCacheResponse cachedResponse: CachedURLResponse) -> CachedURLResponse? {
         // return nil to indicate not necessary to store a cached response
         return nil
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
         // request is complete and data has been received, parse the data
         if (self.activityView != nil) {
             self.activityView.stopAnimating()
         }
         
         // stop ignoring input
-        let app = UIApplication.sharedApplication()
+        let app = UIApplication.shared
         app.endIgnoringInteractionEvents()
         
         // grab the Spotify URI string and attempt to open it
-        let playlistId = String(data: self.responseData, encoding: NSUTF8StringEncoding)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let playlistId = String(data: self.responseData as Data, encoding: String.Encoding.utf8)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let userId = appDelegate.session?.canonicalUsername
-        if let playlistUri = NSURL(string: "http://open.spotify.com/user/\(userId)/playlist/\(playlistId)") {
+        if let playlistUri = URL(string: "http://open.spotify.com/user/\(userId)/playlist/\(playlistId)") {
             app.openURL(playlistUri)
         }
     }
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+    func connection(_ connection: NSURLConnection, didFailWithError error: Error) {
         // request failed for some reason
-        print(error.debugDescription)
+        print(error.localizedDescription)
     }
     
     /*

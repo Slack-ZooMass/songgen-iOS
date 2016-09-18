@@ -15,16 +15,17 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(didLogIn),
-                                                         name: "didLogIn", object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didLogIn),
+                                               name: AppDelegate.didLoginNotification,
+                                               object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -35,20 +36,20 @@ class SignInViewController: UIViewController {
     }
     
     // loginWithSpotify
-    @IBAction func loginWithSpotify(sender: UIButton) {
+    @IBAction func loginWithSpotify(_ sender: UIButton) {
         // Construct a login URL and open it
         let loginURL = SPTAuth.defaultInstance().loginURL
         
         // Opening a URL in Safari close to application launch may trigger an iOS bug, so we wait a bit before doing so.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> () in
-            UIApplication.sharedApplication().openURL(loginURL)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () -> () in
+            UIApplication.shared.openURL(loginURL!)
         })
     }
     
     @objc private func didLogIn() {
-        loginButton.hidden = true
-        loginButton.enabled = false
-        getStartedButton.hidden = false
-        getStartedButton.enabled = true
+        loginButton.isHidden = true
+        loginButton.isEnabled = false
+        getStartedButton.isHidden = false
+        getStartedButton.isEnabled = true
     }
 }

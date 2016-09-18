@@ -13,13 +13,13 @@ import Foundation
     static func getBaseUrl() -> NSString {
         let baseUrl = NSMutableString(string: "")
         
-        baseUrl.appendString("https://songgen.herokuapp.com")
+        baseUrl.append("https://songgen.herokuapp.com")
         
         return baseUrl
     }
     
     static func getPrivateResources() -> NSDictionary? {
-        if let path = NSBundle.mainBundle().pathForResource("private", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "private", ofType: "plist") {
             return NSDictionary.init(contentsOfFile: path)
         } else {
             return nil

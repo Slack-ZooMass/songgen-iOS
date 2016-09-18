@@ -10,7 +10,7 @@ import UIKit
 
 class KeywordPickerViewController: UIViewController, NSURLConnectionDataDelegate, UITextFieldDelegate {
     
-    private var responseData: NSMutableData!
+    fileprivate var responseData: NSMutableData!
     
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var generateButton: UIButton!
@@ -31,32 +31,31 @@ class KeywordPickerViewController: UIViewController, NSURLConnectionDataDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    private func getPlaylist(keywords: [String]) {
+    fileprivate func getPlaylist(_ keywords: [String]) {
         // TODO: Might reevaluate current setup
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)),
-                       dispatch_get_main_queue(), { () ->() in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: { () ->() in
                         self.activityView.stopAnimating()
-                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                        UIApplication.shared.endIgnoringInteractionEvents()
         })
     }
     
-    private static func buildKeywordArray(keywordString: String) -> [String] {
-        var ret = keywordString.componentsSeparatedByString(" ")
+    fileprivate static func buildKeywordArray(_ keywordString: String) -> [String] {
+        var ret = keywordString.components(separatedBy: " ")
         for i in 0..<ret.count {
-            let trimmed = ret[i].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let trimmed = ret[i].trimmingCharacters(in: CharacterSet.whitespaces)
             ret[i] = trimmed
         }
         return ret
     }
     
-    @IBAction func generateButtonPressed(sender: UIButton) {
+    @IBAction func generateButtonPressed(_ sender: UIButton) {
         self.activityView.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         if let keywordString = self.keywordInput.text {
             let keywordArray = KeywordPickerViewController.buildKeywordArray(keywordString)
             self.getPlaylist(keywordArray)
@@ -71,37 +70,37 @@ class KeywordPickerViewController: UIViewController, NSURLConnectionDataDelegate
 //    }
     
     // MARK: - NSURLConnectionData Delegate Methods
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         self.responseData = NSMutableData()
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.responseData.appendData(data)
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+        self.responseData.append(data)
     }
     
-    func connection(connection: NSURLConnection, willCacheResponse cachedResponse: NSCachedURLResponse) -> NSCachedURLResponse? {
+    func connection(_ connection: NSURLConnection, willCacheResponse cachedResponse: CachedURLResponse) -> CachedURLResponse? {
         // return nil to indicate not necessary to store a cached response
         return nil
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
         // request is complete and data has been received
         
         if self.activityView != nil {
             self.activityView.stopAnimating()
         }
         
-        let playlistId = String(data: self.responseData, encoding: NSUTF8StringEncoding)
-        let app = UIApplication.sharedApplication()
+        let playlistId = String(data: self.responseData as Data, encoding: String.Encoding.utf8)
+        let app = UIApplication.shared
         let appDelegate = app.delegate as! AppDelegate
         let userId = appDelegate.session?.canonicalUsername
-        if let playlistUri = NSURL(string: "http://open.spotify.com/user/\(userId)/playlist/\(playlistId)") {
+        if let playlistUri = URL(string: "http://open.spotify.com/user/\(userId)/playlist/\(playlistId)") {
             app.openURL(playlistUri)
         }
     }
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        print(error.debugDescription)
+    func connection(_ connection: NSURLConnection, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
     
     /*
